@@ -27,7 +27,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <h2>This is navbar.</h2>
         {children}
+        <h6>© 2023 Hema Dhami. All rights reserved.</h6>
       </body>
     </html>
   );
