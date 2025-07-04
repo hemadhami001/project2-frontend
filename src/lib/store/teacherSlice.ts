@@ -22,6 +22,10 @@ const teacherSlice = createSlice({
 // action haru ko lagi chai action creator function haru provide garcha
 // action haru automatically generate huncha
 
+const { setTeacherName, setTeacherPassword } = teacherSlice.actions
+export default teacherSlice.reducer
+export { setTeacherName, setTeacherPassword }
+
 
 // reducer ko name j hunchha, action ko name pani same tai huncha
 // export const { setTeacherName, setTeacherPassword } = teacherSlice.actions;

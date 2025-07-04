@@ -1,17 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IIncomingUserPayload, IInitialStudentData } from "./types"
+
+const initialStudentData : IInitialStudentData = {
+    data: ""
+}
 
 
-
-
-
-createSlice({
+const studentSlice = createSlice({
     name: "studentSlice",
-    initialState: {
-        data : "",
-    },
+    initialState: initialStudentData,
     reducers: {
-        setData(state, action) {
-            state.data = 'hema'
+        setData(state : IInitialStudentData, action : PayloadAction<string|number>) {
+            state.data = action.payload
+            // name: "hema",
+            // address: "mahendranagar"
         }
     }
     })
+
+// reducer ko name j hunchha, action ko name pani same tai huncha
+const { setData } = studentSlice.actions
+
+export { setData }
+export default studentSlice.reducer
+
+function  setName(){
+}
+setName("hema")

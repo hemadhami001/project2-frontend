@@ -1,29 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { stat } from "fs";
+import { IUserInitialState } from "./types";
 
+const userInitialState : IUserInitialState = {
+    name: null,
+    address: null
+}
 
-createSlice({
+const userSlice = createSlice({
     name : "userSlice",
-    initialState : {
-        name : null,
-        address : null
-    },
+    initialState : userInitialState,
     reducers : {
         // state = current state or mathi ko initialState ma define gareko state
         // action = action that is dispatched or triggered garda aaune data
-        setName(state, action){
+        setName(state: IUserInitialState, action :PayloadAction<string>) {
+            state.name = action.payload
             // logic to set name
-            state.name = "hema"
+            
         },
-        setAddress(){
+        setAddress(state: IUserInitialState, action :PayloadAction<string>) {
             // logic to set address
-            state.address = "mahendranagar"
+            state
+        },
+        sethaha(state, action){
+
         }
     }
 })
 
+// reducer ko name j hunchha, action ko name pani same tai huncha
+const { setName, setAddress } = userSlice.actions
+export default userSlice.reducer
+export { setName, setAddress }
 
 
+dispatch(setName("hema"))
+dispatch(setAddress("mahendranagar"))
 /*
 const [name, setName] = useState(null);
 const [address, setAddress] = useState(null);
