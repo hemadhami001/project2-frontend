@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const teacherSlice = createSlice({
     name : "teacherSlice",
     initialState : {
-        teacherName : "",
-        teacherPassword : ""
+        teacherName : "hd",
+        teacherPassword : "hd"
     },
     reducers : {
         setTeacherName(state, action){

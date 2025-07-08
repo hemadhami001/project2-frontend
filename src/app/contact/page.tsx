@@ -1,5 +1,16 @@
+"use client";
+
+import { setAddress, setName } from "@/lib/store/userSlice";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useAppDispatch } from "@/lib/store/hooks";
 
 function Contact() {
+  let name = "hema"
+  let address = "mahendranagar"
+  const dispatch = useAppDispatch()
+  dispatch(setName(name))
+  dispatch(setAddress(address))
   return (
     <div>
       <h1>Contact Page</h1>

@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUserInitialState } from "./types";
 
 const userInitialState : IUserInitialState = {
-    name: null,
+    name: "hema",
     address: null
 }
 
@@ -28,13 +28,12 @@ const userSlice = createSlice({
 })
 
 // reducer ko name j hunchha, action ko name pani same tai huncha
-const { setName, setAddress } = userSlice.actions
+const { setName, setAddress, sethaha } = userSlice.actions
 export default userSlice.reducer
-export { setName, setAddress }
+export { setName, setAddress, sethaha }
 
 
-dispatch(setName("hema"))
-dispatch(setAddress("mahendranagar"))
+
 /*
 const [name, setName] = useState(null);
 const [address, setAddress] = useState(null);

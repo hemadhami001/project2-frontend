@@ -14,7 +14,7 @@ const studentSlice = createSlice({
             state.data = action.payload
             // name: "hema",
             // address: "mahendranagar"
-        }
+        },
     }
     })
 

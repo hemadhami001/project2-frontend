@@ -1,5 +1,18 @@
+import { useAppSelector } from '@/lib/store/hooks';
+import { useSelector } from 'react-redux';
+
 
 function About() {
+  // userrSlice = name, address ma j baseko xa tyo yeta fetch/chaheko xa
+  const data = useAppSelector((store) => store.user);
+  /*
+   name : "hema",
+   address : "mahendranagar",
+
+  */
+
+  data.name; // "hema"
+  data.address; // "mahendranagar"
   return (
     <div>
       <h1>About Page</h1>
