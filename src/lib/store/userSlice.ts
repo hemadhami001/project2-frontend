@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUserInitialState } from "./types";
+import API from "../http";
+
 
 const userInitialState : IUserInitialState = {
     name: "hema",
@@ -58,3 +60,55 @@ orderSlice.ts
 
 
 */
+
+//register user
+
+function registerUser(data) {
+    try {
+        return async function registerUserThunk() {
+       const response = await API.post("/user/register", data)
+       if (response.status === 201) {  // user registered successfully
+        dispatch(setName(response.data.data.name))
+        } else {
+         // handle error
+         // throw new Error("User registration failed")
+        }
+    }
+    } catch (error) {
+        console.log("Error in registerUser:", error);
+    }
+}
+
+//login user
+function loginUser() {
+    try {
+        return async function loginUserThunk() {
+        const response = await API.post("/user/login")
+        if (response.status === 200) { // user logged in successfully
+            
+            
+        } else {
+            // handle error
+        }
+    }
+    } catch (error) {
+       console.log("Error in loginUser:", error);
+    }
+}
+
+//forgot password
+function forgotPassword() {
+    try {
+        return async function forgotPasswordThunk() {
+        const response = await API.post("/user/forgot-password")
+        if (response.status === 200) {
+            
+        } else {
+            
+    }
+    }
+    } catch (error) {
+        console.log("Error in forgotPassword:", error);
+        
+    }
+}
