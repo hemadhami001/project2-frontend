@@ -7,5 +7,9 @@ export interface IUserData{
 
 export interface IIntialSate{
     user : IUserData,
-    satus : Status
+    status : Status
+}
+
+export interface IRegisterData extends IUserData {
+    email : string
 }
