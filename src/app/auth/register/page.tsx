@@ -1,12 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { IRegisterData } from "./register.type";
 import { registerUser } from "@/lib/store/auth/authSlice"
-import { useAppSelector } from "@/lib/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { Status } from "@/lib/types/type";
 
 
 function Register() {
     // user le k  type garxa ta input field ma track garere stor egarne
+    const dispatch = useAppDispatch()
     const {institute} = useAppSelector((store) => store.institute)
     const {status} = useAppSelector((store) => store.auth)
     const [data, setData] = useState<IRegisterData>({
