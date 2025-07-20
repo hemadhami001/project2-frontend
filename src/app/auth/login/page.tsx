@@ -1,14 +1,20 @@
+"use client";
+
 import { ChangeEvent, FormEvent, useState } from "react";
 import { ILoginData } from "./login.type";
-import { useAppSelector } from "@/lib/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { loginUser } from "@/lib/store/auth/authSlice";
 import { Status } from "@/lib/types/type";
 
 
 function Login() {
+    const dispatch = useAppDispatch()
+    const {user} = useAppSelector((store) => store.auth);  // subscribe to auth state
+    console.log(user,"Data user ma aayo")
+
     // user le k type garxa ta input field ma track garere stor egarne
-    const {status} = useAppSelector((store) => store.auth)
-  const {institute} = useAppSelector((store) => store.institute)
+  //   const {status} = useAppSelector((store) => store.auth)
+  // const {institute} = useAppSelector((store) => store.institute)
     const [data, setData] = useState<ILoginData>({
         email: "",
         password: ""
@@ -24,14 +30,17 @@ function Login() {
     }
 
     const handleLoginSubmission = (e : FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
       // api call
-      loginUser(data)
-      if(status == Status.SUCCESS) {
-        alert("Logged in success")
-      }
-      else if(status == Status.ERROR) {
-        alert("Error happened")
-      }
+     dispatch(loginUser(data))
+
+      // loginUser(data)
+      // if(status == Status.SUCCESS) {
+      //   alert("Logged in success")
+      // }
+      // else if(status == Status.ERROR) {
+      //   alert("Error happened")
+      // }
     }
 
 

@@ -8,15 +8,16 @@ import API from "@/lib/http";
 
 const initialState : IInstituteCourseInitialData = {
     status : Status.LOADING,
-    courses : [{
-        id : "1",
-        courseName : "Sample Course",
-        coursePrice : "100"
-    }, {
-        id : "2",
-        courseName : "Sample Course 2",
-        coursePrice : "200"
-    }]
+    courses : []
+    //     {
+    //     id : "1",
+    //     courseName : "Sample Course",
+    //     coursePrice : "100"
+    // }, {
+    //     id : "2",
+    //     courseName : "Sample Course 2",
+    //     coursePrice : "200"
+    // }
 }
 
 const instituteCourseSlice = createSlice({
@@ -30,14 +31,19 @@ const instituteCourseSlice = createSlice({
             state.courses = action.payload;
         },
         setDeleteCourse(state, action : PayloadAction<string>) {
+            // id -1
             const index = state.courses.findIndex(course=> course.id =  action.payload)
-            state.courses.splice(index,1)
+            if(index !== -1) {
+              state.courses.splice(index,1)
+            }
     },
         setEditCourse(state, action : PayloadAction<any>) {
             const id = action.payload.id
             const data = action.payload.data
             const index = state.courses.findIndex(course => course.id === id)
-            state.courses[1] = data
+            if(index !== -1) {
+                state.courses[1] = data
+            }
         }
     }
 })

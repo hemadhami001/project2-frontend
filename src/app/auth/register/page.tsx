@@ -1,3 +1,5 @@
+"use client";
+
 import { ChangeEvent, FormEvent, useState } from "react";
 import { IRegisterData } from "./register.type";
 import { registerUser } from "@/lib/store/auth/authSlice"
@@ -8,8 +10,8 @@ import { Status } from "@/lib/types/type";
 function Register() {
     // user le k  type garxa ta input field ma track garere stor egarne
     const dispatch = useAppDispatch()
-    const {institute} = useAppSelector((store) => store.institute)
-    const {status} = useAppSelector((store) => store.auth)
+    // const {institute} = useAppSelector((store) => store.institute)
+    // const {status} = useAppSelector((store) => store.auth)
     const [data, setData] = useState<IRegisterData>({
         username: "",
         email: "",
@@ -27,10 +29,12 @@ function Register() {
 
     const handleRegisterSubmission =(e: FormEvent<HTMLFormElement>) => {
         // api call garne
-        registerUser(data)
-        if(status == Status.SUCCESS) {
+        e.preventDefault();
+        dispatch(registerUser(data))
+        
+        // if(status == Status.SUCCESS) {
             
-        }
+        // }
     }
 
     return (
