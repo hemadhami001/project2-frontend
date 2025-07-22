@@ -2,16 +2,12 @@
 
 import { ChangeEvent, FormEvent, useState } from "react";
 import { ILoginData } from "./login.type";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { useAppSelector } from "@/lib/store/hooks";
 import { loginUser } from "@/lib/store/auth/authSlice";
 import { Status } from "@/lib/types/type";
 
 
 function Login() {
-    const dispatch = useAppDispatch()
-    const {user} = useAppSelector((store) => store.auth);  // subscribe to auth state
-    console.log(user,"Data user ma aayo")
-
     // user le k type garxa ta input field ma track garere stor egarne
   //   const {status} = useAppSelector((store) => store.auth)
   // const {institute} = useAppSelector((store) => store.institute)
@@ -30,30 +26,26 @@ function Login() {
     }
 
     const handleLoginSubmission = (e : FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
       // api call
-     dispatch(loginUser(data))
-
-      // loginUser(data)
-      // if(status == Status.SUCCESS) {
-      //   alert("Logged in success")
-      // }
-      // else if(status == Status.ERROR) {
-      //   alert("Error happened")
-      // }
+      loginUser(data)
+      if(status == Status.SUCCESS) {
+        alert("Logged in success")
+      }
+      else if(status == Status.ERROR) {
+        alert("Error happened")
+      }
     }
 
 
 
     return(
         <>
-        <h1>This is the login page.</h1>
         <div className="bg-gray-100 flex h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
   <div className="w-full max-w-md space-y-8">
     <div className="bg-white shadow-md rounded-md p-6">
       <img className="mx-auto h-12 w-auto" src="https://www.svgrepo.com/show/499664/user-happy.svg"  />
       <h2 className="my-3 text-center text-3xl font-bold tracking-tight text-gray-900">
-        Sign up for an account
+        Sign in for an account
       </h2>
       <form onSubmit={handleLoginSubmission} className="space-y-6" method="POST">
         <div>
@@ -69,7 +61,7 @@ function Login() {
           </div>
         </div>
         <div>
-          <button type="submit" className="flex w-full justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2">Register
+          <button type="submit" className="flex w-full justify-center rounded-md border border-transparent bg-sky-400 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2">Login
             Account
           </button>
         </div>

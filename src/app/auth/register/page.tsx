@@ -15,7 +15,8 @@ function Register() {
     const [data, setData] = useState<IRegisterData>({
         username: "",
         email: "",
-        password: ""
+        password: "",
+        token: ""
     })
 
   // handling type gareko data
@@ -26,20 +27,17 @@ function Register() {
             [name]: value
         })
     }
-
+     console.log(data, "data in register page")
     const handleRegisterSubmission =(e: FormEvent<HTMLFormElement>) => {
         // api call garne
-        e.preventDefault();
         dispatch(registerUser(data))
-        
-        // if(status == Status.SUCCESS) {
+        if(status == Status.SUCCESS) {
             
-        // }
+        }
     }
 
     return (
         <>
-            <h1>This is the register page.</h1>
             <div className="bg-gray-100 flex h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
   <div className="w-full max-w-md space-y-8">
     <div className="bg-white shadow-md rounded-md p-6">

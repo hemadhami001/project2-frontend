@@ -9,7 +9,7 @@ import { ILoginData } from "@/app/auth/login/login.type"
 const initialState : IIntialSate = {
     user: {
         username: "",
-        token: ""
+        password: ""
     },
     status : Status.LOADING // Assuming the initial status is loading
 
@@ -56,8 +56,6 @@ export function loginUser(data : ILoginData) {
         try {
             const response = await API.post("auth/login", data)
             if (response.status === 200) {
-                dispatch(setUser(response.data.data))
-                localStorage.setItem("token", response.data.data.token)
                 dispatch(setStatus(Status.SUCCESS))
             }
             else {
